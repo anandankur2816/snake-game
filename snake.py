@@ -9,6 +9,7 @@ class Snake:
         self.wr.penup()
         self.wr.hideturtle()
         self.score = 0
+        self.high_score = int(open("high_score.txt").read())
         self.screen_write()
         self.create_snake()
         self.head = self.all_t[0]
@@ -69,12 +70,16 @@ class Snake:
     def screen_write(self):
         self.wr.goto(0,270)
         self.wr.color("white")
-        self.wr.write(arg=f"Score:{self.score}", move=True, align="center",
+        self.wr.write(arg=f"Score:{self.score} High Score:{self.high_score}", move=True, align="center",
                       font=("Arial", 20, "normal"))
 
     def score_update(self):
         self.wr.clear()
         self.score += 1
+        if self.score>self.high_score:
+            self.high_score=self.score
+            with open("high_score.txt","w") as file:
+                file.write(str(self.high_score))
         self.screen_write()
 
     def game_over(self):

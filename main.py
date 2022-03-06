@@ -4,6 +4,8 @@ from turtle import Screen
 from snake import Snake
 screen = Screen()
 screen.setup(600, 600)
+# high_score = int(open("high_score.txt").read())
+# print(high_score)
 screen.bgcolor('black')
 # screen.screensize(600, 600, "black")
 screen.title("SnakeX Ninja")
